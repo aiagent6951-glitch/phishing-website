@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="kk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AliGuard — Фишингке қарсы қорғаныс</title>
+    <meta name="description" content="Фишинг пен әлеуметтік инженерияға қарсы интерактивті оқу құралы">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23071B35'/%3E%3Cpath d='M50 20L20 50V80H80V50L50 20Z' fill='none' stroke='%230BB0FF' stroke-width='8' stroke-linejoin='round'/%3E%3Ctext x='50' y='60' font-family='Arial' font-size='40' font-weight='bold' text-anchor='middle' fill='%230BB0FF'%3EA%3C/text%3E%3C/svg%3E">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyberblue: '#0BB0FF',
+                        darknavy: '#071122',
+                        alertred: '#FF4D4D',
+                        gold: '#FFD700'
+                    },
+                    fontFamily: {
+                        sans: ['"Exo 2"', 'sans-serif'],
+                    },
+                    animation: {
+                        'neon-pulse': 'neon-pulse 2s infinite alternate',
+                    },
+                    keyframes: {
+                        'neon-pulse': {
+                            '0%': { 'text-shadow': '0 0 5px rgba(11, 176, 255, 0.5)' },
+                            '100%': { 'text-shadow': '0 0 20px rgba(11, 176, 255, 1)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background-color: #071122;
+            color: white;
+        }
+        .cyber-border {
+            border: 1px solid rgba(11, 176, 255, 0.3);
+            box-shadow: 0 0 15px rgba(11, 176, 255, 0.2);
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(11, 176, 255, 0.4);
+        }
+        ::selection {
+            background: #0BB0FF;
+            color: #071122;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-darknavy to-black">
+    <div id="vanta-bg" class="fixed inset-0 -z-10"></div>
+    
+    <!-- Header -->
+    <header class="py-6 px-4 md:px-12 backdrop-blur-md bg-opacity-80 bg-darknavy border-b border-cyberblue border-opacity-30">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-12 h-12 bg-cyberblue bg-opacity-20 rounded-xl flex items-center justify-center cyber-border">
+                    <span class="text-2xl font-bold text-cyberblue">A</span>
+                </div>
+                <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyberblue to-white">
+                    Ali<span class="animate-neon-pulse">Guard</span>
+                </h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="text-white hover:text-cyberblue transition">Фишинг деген не?</a>
+                <a href="#quiz" class="text-white hover:text-cyberblue transition">Тест</a>
+                <a href="#resources" class="text-white hover:text-cyberblue transition">Ресурстар</a>
+            </nav>
+            <!-- Header бөліміндегі Telegram бот сілтемесі дұрыс екенін тексеріңіз -->
+            <a href="https://t.me/phishcheckbot" target="_blank" class="px-4 py-2 bg-gradient-to-r from-cyberblue to-blue-500 rounded-lg cyber-border hover:opacity-90 transition flex items-center space-x-2">
+                <i data-feather="send" class="w-4 h-4"></i>
+                <span>Telegram бот</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-20 px-4 md:px-12 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyberblue to-white">Фишингке</span> 
+                <span class="text-alertred">қарсы</span> күрес
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-10">
+                Сіздің компанияңызды қорғауға арналған интерактивті оқу құралы
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#quiz" class="px-8 py-4 bg-cyberblue text-darknavy font-bold rounded-lg hover:bg-opacity-90 transition transform hover:scale-105">
+                    Қауіпсіздікті тексеру
+                </a>
+                <a href="https://t.me/phishcheckbot" target="_blank" class="px-8 py-4 bg-transparent text-cyberblue font-bold rounded-lg cyber-border hover:bg-opacity-20 transition transform hover:scale-105 flex items-center justify-center">
+                    <i data-feather="send" class="w-5 h-5 mr-2"></i>
+                    Telegram бот
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4 md:px-12 max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <img src="images/phishing.jpg" alt="Фишинг қауіпі" class="rounded-xl cyber-border w-full">
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold mb-6">Фишинг деген не?</h2>
+                <p class="text-gray-300 mb-4">
+                    Фишинг — бұл киберқылмыскерлердің ақпаратты ұрлау үшін пайдаланатын әлеуметтік инженерия әдістерінің жиынтығы. Олар сіздің құпия деректеріңізді (парольдер, несие карталарының нөмірлері, т.б.) алу үшін сенімді көздерге ұқсайды.
+                </p>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-start">
+                        <i data-feather="alert-triangle" class="text-alertred mr-2 mt-1"></i>
+                        <span>Электрондық пошта арқылы жіберілетін жалған хабарламалар</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-feather="smartphone" class="text-alertred mr-2 mt-1"></i>
+                        <span>СМС немесе мессенджерлер арқылы жіберілетін жалған сілтемелер</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-feather="globe" class="text-alertred mr-2 mt-1"></i>
+                        <span>Ресми сайттардың жалған көшірмелері</span>
+                    </li>
+                </ul>
+                <a href="phishing-details/phishing.html" class="inline-flex items-center text-cyberblue hover:text-white transition-all duration-300 hover:text-shadow-lg hover:shadow-cyberblue/50">
+                    Толығырақ <i data-feather="arrow-right" class="ml-2 transition-all duration-300 group-hover:translate-x-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Тест бөлімі -->
+    <section id="quiz" class="py-16 px-4 md:px-12 bg-darknavy bg-opacity-80">
+        <div class="max-w-6xl mx-auto">
+            <!-- Quiz Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Фишинг тесті</h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    Теориялық біліміңізді және практикалық дағдыларыңызды тексеріңіз
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
+                    <div class="bg-darknavy p-4 rounded-xl cyber-border text-center">
+                        <div class="text-2xl font-bold text-cyberblue mb-2">10</div>
+                        <div class="text-gray-400 text-sm">Теориялық сұрақтар</div>
+                    </div>
+                    <div class="bg-darknavy p-4 rounded-xl cyber-border text-center">
+                        <div class="text-2xl font-bold text-gold mb-2">10</div>
+                        <div class="text-gray-400 text-sm">Практикалық сұрақтар</div>
+                    </div>
+                    <div class="bg-darknavy p-4 rounded-xl cyber-border text-center">
+                        <div class="text-2xl font-bold text-alertred mb-2">20</div>
+                        <div class="text-gray-400 text-sm">Барлығы</div>
+                    </div>
+                </div>
+            
+                <!-- Тест типін таңдау -->
+                <div class="max-w-md mx-auto mt-10">
+                    <div class="bg-darknavy p-6 rounded-xl cyber-border">
+                        <h3 class="text-xl font-bold mb-4 text-center">Тест типін таңдаңыз</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button id="theoryBtn" onclick="startTheoryQuiz()" class="px-6 py-4 bg-cyberblue text-darknavy font-bold rounded-lg hover:bg-opacity-90 transition transform hover:scale-105">
+                                <i data-feather="book-open" class="w-5 h-5 mb-2 mx-auto"></i>
+                                <div>Теориялық тест</div>
+                            </button>
+                            <button id="practiceBtn" onclick="startPracticeQuiz()" class="px-6 py-4 bg-gold text-darknavy font-bold rounded-lg hover:bg-opacity-90 transition transform hover:scale-105">
+                                <i data-feather="link" class="w-5 h-5 mb-2 mx-auto"></i>
+                                <div>Практикалық тест</div>
+                            </button>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-4 text-center">
+                            Немесе <button onclick="startFullQuiz()" class="text-cyberblue hover:underline">толық тестті бастау</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start Screen -->
+            <div id="quizStart" class="hidden bg-darknavy p-8 rounded-xl cyber-border text-center">
+                <!-- Бастапқы экран құрамы JavaScript арқылы толтырылады -->
+            </div>
+
+            <!-- Quiz Container -->
+            <div id="quizContainer" class="hidden">
+                <!-- Progress -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-400" id="progressText">Сұрақ 1/20</span>
+                        <span class="text-cyberblue font-bold" id="scoreText">Ұпай: 0</span>
+                        <span class="text-gold font-bold" id="quizTypeBadge"></span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div id="progressBar" class="bg-cyberblue h-2 rounded-full transition-all duration-500" style="width: 5%"></div>
+                    </div>
+                </div>
+
+                <!-- Question -->
+                <div id="questionContainer" class="bg-darknavy p-6 rounded-xl cyber-border mb-6">
+                    <div class="text-center mb-4">
+                        <div class="inline-block px-4 py-2 bg-cyberblue bg-opacity-20 rounded-lg cyber-border mb-4">
+                            <span id="scenarioText" class="text-cyberblue font-bold text-sm"></span>
+                            <span id="questionTypeBadge" class="ml-2 px-2 py-1 rounded text-xs font-bold"></span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-6" id="questionText"></h3>
+                
+                        <!-- URL Box (только для практических вопросов) -->
+                        <div id="urlBox" class="hidden bg-[#0a1525] p-4 rounded-lg cyber-border max-w-2xl mx-auto mb-6">
+                            <div class="flex items-center justify-center space-x-3 mb-3">
+                                <div class="w-12 h-12 bg-cyberblue bg-opacity-20 rounded-lg flex items-center justify-center">
+                                    <i data-feather="link" class="text-cyberblue"></i>
+                                </div>
+                                <div class="text-left">
+                                    <div class="font-bold text-gray-300" id="scenarioTitle"></div>
+                                    <div class="text-sm text-gray-400">URL талдауы</div>
+                                </div>
+                            </div>
+                            <div class="text-gray-300 text-sm text-left font-mono bg-black p-3 rounded break-all" id="scenarioDescription"></div>
+                        </div>
+
+                        <!-- Image Box (для теории) -->
+                        <div id="imageBox" class="hidden max-w-2xl mx-auto mb-6">
+                            <img id="questionImage" src="" alt="" class="rounded-xl cyber-border w-full">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Answers -->
+                <div id="answersContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <!-- Answers will be loaded here -->
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex justify-between">
+                    <button id="prevBtn" onclick="prevQuestion()" class="px-6 py-3 bg-transparent text-cyberblue font-bold rounded-lg cyber-border hover:bg-opacity-20 transition flex items-center space-x-2 opacity-50 cursor-not-allowed">
+                        <i data-feather="arrow-left" class="w-4 h-4"></i>
+                        <span>Алдыңғы</span>
+                    </button>
+                    <button id="nextBtn" onclick="nextQuestion()" class="px-6 py-3 bg-cyberblue text-darknavy font-bold rounded-lg hover:bg-opacity-90 transition flex items-center space-x-2">
+                        <span>Келесі</span>
+                        <i data-feather="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                    <button id="submitBtn" onclick="submitQuiz()" class="px-6 py-3 bg-gold text-darknavy font-bold rounded-lg hover:bg-opacity-90 transition flex items-center space-x-2 hidden">
+                        <span>Тестті аяқтау</span>
+                        <i data-feather="check" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="quizResults" class="hidden bg-darknavy p-8 rounded-xl cyber-border text-center">
+                <!-- Results will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources" class="py-16 px-4 md:px-12 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12">Пайдалы ресурстар</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Бірінші карточканы төмендегідей етіп ауыстыру -->
+            <div class="bg-gradient-to-br from-darknavy to-[#0a1525] p-8 rounded-2xl cyber-border group hover:transform hover:-translate-y-2 transition-all duration-300">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="w-14 h-14 bg-gradient-to-r from-cyberblue to-blue-500 rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
+                        <i data-feather="check-square" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <span class="px-3 py-1 bg-cyberblue bg-opacity-20 text-cyberblue text-xs font-bold rounded-full">PDF</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Фишингті тану бойынша толық қоланбалық</h3>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    Фишинг шабуылдарын сәтті анықтауға және болдырмауға арналған практикалық қоланба. 
+                    Күнделікті қауіпсіздік тәжірибелерінің толық жиынтығы.
+                </p>
+    
+                <!-- Фишинг чек-листінің негізгі элементтері -->
+                <div class="space-y-4 mb-6">
+                    <div class="flex items-start">
+                        <div class="w-6 h-6 bg-cyberblue bg-opacity-20 rounded-full flex items-center justify-center mr-3 mt-1">
+                            <i data-feather="eye" class="w-3 h-3 text-cyberblue"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-white">Жалпы фишинг белгілері</div>
+                            <div class="text-sm text-gray-400">Шабуылдарды танудың негізгі көрсеткіштері</div>
+                        </div>
+                    </div>
+        
+                    <div class="flex items-start">
+                        <div class="w-6 h-6 bg-cyberblue bg-opacity-20 rounded-full flex items-center justify-center mr-3 mt-1">
+                            <i data-feather="mail" class="w-3 h-3 text-cyberblue"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-white">Электрондық поштаны тексеру</div>
+                            <div class="text-sm text-gray-400">Күдікті хабарламаларды талдау алгоритмі</div>
+                        </div>
+                    </div>
+        
+                    <div class="flex items-start">
+                        <div class="w-6 h-6 bg-cyberblue bg-opacity-20 rounded-full flex items-center justify-center mr-3 mt-1">
+                            <i data-feather="link" class="w-3 h-3 text-cyberblue"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-white">URL сілтемелерін талдау</div>
+                            <div class="text-sm text-gray-400">Жалған сілтемелерді анықтау әдістері</div>
+                        </div>
+                    </div>
+        
+                    <div class="flex items-start">
+                        <div class="w-6 h-6 bg-cyberblue bg-opacity-20 rounded-full flex items-center justify-center mr-3 mt-1">
+                            <i data-feather="smartphone" class="w-3 h-3 text-cyberblue"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-white">Мобильді фишинг</div>
+                            <div class="text-sm text-gray-400">СМС және мессенджер шабуылдары</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <a href="resources/Phishing.pdf" download="Фишинг_тану_коланбасы.pdf" class="inline-flex items-center justify-between w-full px-4 py-3 bg-gradient-to-r from-cyberblue to-blue-600 text-white font-bold rounded-lg hover:opacity-90 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-cyberblue/30">
+                    <span>Толық қоланбаны жүктеу</span>
+                    <i data-feather="download-cloud" class="w-5 h-5 group-hover:animate-bounce"></i>
+                </a>
+    
+                <!-- Кішігірім опциялар -->
+                <div class="mt-4 flex justify-between items-center">
+                    <div class="text-xs text-gray-500">
+                        <i data-feather="clock" class="w-3 h-3 inline mr-1"></i>
+                        Оқу уақыты: 15 мин
+                    </div>
+                    <div class="text-xs text-gray-500">
+                        <i data-feather="bar-chart" class="w-3 h-3 inline mr-1"></i>
+                        24 бет
+                    </div>
+                    <div class="text-xs text-gray-500">
+                        <i data-feather="calendar" class="w-3 h-3 inline mr-1"></i>
+                        Жаңартылған: 2025
+                    </div>
+                </div>
+            </div>
+
+            <!-- Екінші карточканы төмендегідей етіп ауыстыру -->
+            <div class="bg-gradient-to-br from-darknavy to-[#0a1525] p-8 rounded-2xl cyber-border group hover:transform hover:-translate-y-2 transition-all duration-300">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="w-14 h-14 bg-gradient-to-r from-gold to-yellow-500 rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
+                        <i data-feather="image" class="w-7 h-7 text-darknavy"></i>
+                    </div>
+                    <div class="flex space-x-2">
+                        <span class="px-3 py-1 bg-gold bg-opacity-20 text-gold text-xs font-bold rounded-full">PNG</span>
+                        <span class="px-3 py-1 bg-cyberblue bg-opacity-20 text-cyberblue text-xs font-bold rounded-full">ВЕКТОРЛЫҚ</span>
+                    </div>
+                </div>
+    
+                <h3 class="text-2xl font-bold mb-2">Киберқауіпсіздік инфографикасы</h3>
+                <div class="text-gold font-bold mb-4">Негізгі қауіптер мен қорғаныс тәсілдері</div>
+    
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    Фишинг, вирус, пароль қауіпсіздігі және басқа да киберқауіптерді 
+                    көрнекі түрде түсіндіретін әдемі инфографика.
+                </p>
+    
+                <!-- Суретті превью -->
+                <div class="mb-6 rounded-xl overflow-hidden cyber-border bg-darknavy p-4">
+                    <div class="relative overflow-hidden rounded-lg">
+                        <img src="resources/images.png" alt="Киберқауіпсіздік инфографикасы" class="w-full h-48 object-contain hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darknavy/50 to-transparent"></div>
+                    </div>
+                    <div class="mt-3 text-center text-sm text-gray-400">
+                        Әр бөлімде қауіп түрлері мен қорғаныс әдістері көрсетілген
+                    </div>
+                </div>
+    
+                <!-- Жүктеу түймелері -->
+                <div class="space-y-3">
+                    <a href="resources/images.png" download="Киберкауипсиздик_инфографика.png" class="inline-flex items-center justify-between w-full px-4 py-3 bg-gradient-to-r from-gold to-yellow-600 text-darknavy font-bold rounded-lg hover:opacity-90 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-gold/30">
+                        <div class="flex items-center">
+                            <i data-feather="download" class="w-5 h-5 mr-3"></i>
+                            <span>Инфографиканы жүктеу</span>
+                        </div>
+                        <span class="text-sm bg-darknavy bg-opacity-30 px-2 py-1 rounded">PNG</span>
+                    </a>
+        
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="openFullscreenImage()" class="inline-flex items-center justify-center px-3 py-2 bg-transparent text-gold font-bold rounded-lg cyber-border hover:bg-gold hover:bg-opacity-20 transition-all duration-300 text-sm">
+                            <i data-feather="maximize" class="w-4 h-4 mr-2"></i>
+                            Толық экран қарау
+                        </button>
+            
+                        <button onclick="shareImage()" class="inline-flex items-center justify-center px-3 py-2 bg-transparent text-cyberblue font-bold rounded-lg cyber-border hover:bg-cyberblue hover:bg-opacity-20 transition-all duration-300 text-sm">
+                            <i data-feather="share-2" class="w-4 h-4 mr-2"></i>
+                            Бөлісу
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Үшінші карточканы (видео) төмендегідей етіп ауыстыру -->
+            <div class="bg-gradient-to-br from-darknavy to-[#0a1525] p-8 rounded-2xl cyber-border group hover:transform hover:-translate-y-2 transition-all duration-300">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="w-14 h-14 bg-gradient-to-r from-alertred to-red-500 rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
+                        <i data-feather="video" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <div class="flex space-x-2">
+                        <span class="px-3 py-1 bg-alertred bg-opacity-20 text-alertred text-xs font-bold rounded-full">ВИДЕО</span>
+                        <span class="px-3 py-1 bg-cyberblue bg-opacity-20 text-cyberblue text-xs font-bold rounded-full">ОРЫСША</span>
+                    </div>
+                </div>
+    
+                <h3 class="text-2xl font-bold mb-2">Фишинг шабуылдарын тану</h3>
+                <div class="text-alertred font-bold mb-4">Практикалық оқу материалы</div>
+    
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    Фишинг шабуылдарының нақты мысалдарымен видео сабақ. 
+                    Күнделікті қолданыстағы қауіптерді тану және олардан қорғану.
+                </p>
+    
+                <!-- Видео превьюсы (YouTube thumbnail стилінде) -->
+                <div class="mb-6 rounded-xl overflow-hidden cyber-border relative group/video">
+                    <!-- Видео превью суреті -->
+                    <div class="relative h-48 bg-gradient-to-r from-darknavy to-black">
+                        <!-- Егер өз видео превью суретіңіз болса -->
+                        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Фишинг видео сабақ" class="w-full h-full object-cover opacity-60">
+            
+                        <!-- Видео атауы және уақыты -->
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-darknavy to-transparent p-4">
+                            <div class="font-bold text-white mb-1">Фишинг: Толық нұсқаулық</div>
+                            <div class="flex items-center text-sm text-gray-300">
+                                <i data-feather="clock" class="w-3 h-3 mr-1"></i>
+                                15:24 • <span class="mx-2">|</span> 
+                                <i data-feather="eye" class="w-3 h-3 mr-1 ml-2"></i>
+                                24К қаралым
+                            </div>
+                        </div>
+            
+                        <!-- Play түймесі -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-16 h-16 bg-alertred rounded-full flex items-center justify-center transform group-hover/video:scale-110 transition-all duration-300 shadow-2xl shadow-alertred/50">
+                                <i data-feather="play" class="w-8 h-8 text-white ml-1"></i>
+                            </div>
+                        </div>
+            
+                        <!-- YouTube логосы -->
+                        <div class="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">
+                            YouTube
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Видео мазмұны -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="p-3 bg-darknavy rounded-lg cyber-border text-center">
+                        <div class="text-2xl font-bold text-alertred mb-1">15:24</div>
+                        <div class="text-xs text-gray-400">Ұзақтығы</div>
+                    </div>
+        
+                    <div class="p-3 bg-darknavy rounded-lg cyber-border text-center">
+                        <div class="text-2xl font-bold text-cyberblue mb-1">HD</div>
+                        <div class="text-xs text-gray-400">Сапасы</div>
+                    </div>
+                </div>
+    
+                <!-- Бөлімдер тізімі -->
+                <div class="mb-6">
+                    <div class="text-sm text-gray-400 mb-3">Видеода қамтылған тақырыптар:</div>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-alertred bg-opacity-20 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-xs text-alertred">1</span>
+                            </div>
+                            <span class="text-white text-sm">Фишингтің анықтамасы және түрлері</span>
+                        </div>
+            
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-cyberblue bg-opacity-20 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-xs text-cyberblue">2</span>
+                            </div>
+                            <span class="text-white text-sm">Нақты мысалдар талдауы</span>
+                        </div>
+            
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-gold bg-opacity-20 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-xs text-gold">3</span>
+                            </div>
+                            <span class="text-white text-sm">Қорғаныс әдістері</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Екі нұсқа: YouTube қарау немесе жүктеу -->
+                <div class="space-y-3">
+                    <!-- YouTube қарау -->
+                    <a href="https://www.youtube.com/watch?v=bmaU8KA0Mrg" target="_blank" class="inline-flex items-center justify-between w-full px-4 py-3 bg-gradient-to-r from-alertred to-red-600 text-white font-bold rounded-lg hover:opacity-90 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-alertred/30">
+                        <div class="flex items-center">
+                            <i data-feather="play-circle" class="w-5 h-5 mr-3"></i>
+                            <span>YouTube-та қарау</span>
+                        </div>
+                        <i data-feather="external-link" class="w-4 h-4"></i>
+                    </a>
+        
+                    <!-- Немесе жүктеу нұсқасы -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="resources/videoplayback.mp4" download="Фишинг_тану_видео.mp4" class="inline-flex items-center justify-center px-3 py-2 bg-transparent text-alertred font-bold rounded-lg cyber-border hover:bg-alertred hover:bg-opacity-20 transition-all duration-300 text-sm">
+                            <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                            Видеоны жүктеу
+                        </a>
+            
+                        <button onclick="openVideoFullscreen()" class="inline-flex items-center justify-center px-3 py-2 bg-transparent text-cyberblue font-bold rounded-lg cyber-border hover:bg-cyberblue hover:bg-opacity-20 transition-all duration-300 text-sm">
+                            <i data-feather="maximize" class="w-4 h-4 mr-2"></i>
+                            Толық экран
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Telegram Bot Promotion Section -->
+    <section id="telegram-bot-promo" class="py-16 px-4 md:px-12 bg-gradient-to-r from-darknavy to-black">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="w-20 h-20 bg-cyberblue bg-opacity-20 rounded-xl flex items-center justify-center cyber-border mx-auto mb-6">
+                <i data-feather="send" class="text-cyberblue w-10 h-10"></i>
+            </div>
+            <h2 class="text-3xl font-bold mb-6">🤖 Telegram Bot — Сілтемелерді тез тексеру құралы</h2>
+            <p class="text-gray-300 mb-8 max-w-3xl mx-auto">
+                Біздің Telegram бот арқылы кез келген сілтемені тексеруге болады. 
+                Бот сілтемені талдап, фишинг, алдау және зиянды сілтемелерді анықтайды.
+            </p>
+        
+            <div class="mb-10">
+                <div class="inline-flex items-center bg-darknavy px-6 py-3 rounded-lg cyber-border mb-4">
+                    <span class="text-cyberblue font-bold">@phishcheckbot</span>
+                </div>
+                <p class="text-gray-400">Боттың пайдаланушы аты</p>
+            </div>
+        
+            <a href="https://t.me/phishcheckbot" target="_blank" class="inline-flex items-center px-8 py-4 bg-cyberblue text-darknavy font-bold rounded-lg hover:bg-opacity-90 transition transform hover:scale-105 mb-6">
+                <i data-feather="send" class="w-6 h-6 mr-3"></i>
+                Telegram ботқа өту
+            </a>
+        
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+                <div class="p-4">
+                    <div class="text-cyberblue text-3xl mb-2">1️⃣</div>
+                    <h5 class="font-bold mb-2">Ботқа өтіңіз</h5>
+                    <p class="text-sm text-gray-300">Telegram-да @phishcheckbot іздеңіз</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-cyberblue text-3xl mb-2">2️⃣</div>
+                    <h5 class="font-bold mb-2">Сілтемені жіберіңіз</h5>
+                    <p class="text-sm text-gray-300">Күдікті сілтемені ботқа жіберіңіз</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-cyberblue text-3xl mb-2">3️⃣</div>
+                    <h5 class="font-bold mb-2">Нәтижені алыңыз</h5>
+                    <p class="text-sm text-gray-300">Бот сізге толық талдау жібереді</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 md:px-12 bg-darknavy border-t border-cyberblue border-opacity-30">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-10 h-10 bg-cyberblue bg-opacity-20 rounded-lg flex items-center justify-center cyber-border">
+                        <span class="text-xl font-bold text-cyberblue">A</span>
+                    </div>
+                    <h3 class="text-xl font-bold">AliGuard</h3>
+                </div>
+                <p class="text-gray-400">Фишингке қарсы қорғаныс академиясы</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Бөлімдер</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-cyberblue transition">Оқу материалы</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-cyberblue transition">Құралдар</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-cyberblue transition">Тест</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-cyberblue transition">Ресурстар</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Байланыс</h4>
+                <ul class="space-y-2">
+                    <li class="flex items-center">
+                        <i data-feather="mail" class="text-gray-400 mr-2" width="16"></i>
+                        <span class="text-gray-400">info@aliguard.kz</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i data-feather="phone" class="text-gray-400 mr-2" width="16"></i>
+                        <span class="text-gray-400">+7 777 483 6424</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Байланыс</h4>
+                <div class="space-y-3">
+                    <a href="https://t.me/phishcheckbot" target="_blank" class="flex items-center text-cyberblue hover:text-white transition">
+                        <i data-feather="send" class="mr-2 w-4 h-4"></i>
+                        Telegram бот
+                    </a>
+                    <div class="flex items-center text-gray-400">
+                        <i data-feather="mail" class="mr-2 w-4 h-4"></i>
+                        <span>info@aliguard.kz</span>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <p class="text-sm text-gray-500">© 2025 AliGuard. Барлық құқықтар қорғалған.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="quiz-data.js"></script>
+    <script>
+        // Initialize Vanta.js background
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x0bb0ff,
+            backgroundColor: 0x071122,
+            points: 10.00,
+            maxDistance: 22.00,
+            spacing: 17.00
+        });
+
+        // Feather icons
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+        });
+
+        // Quiz functionality
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = [];
+        let currentQuizData = [];
+        let quizType = ''; // 'theory', 'practice', or 'full'
+
+        function startTheoryQuiz() {
+            quizType = 'theory';
+            currentQuizData = quizData.filter(q => q.type === 'theory');
+            if (currentQuizData.length === 0) {
+                currentQuizData = quizData.slice(0, 10).map((q, i) => ({...q, id: i+1}));
+            }
+            startSelectedQuiz();
+        }
+
+        function startPracticeQuiz() {
+            quizType = 'practice';
+            currentQuizData = quizData.filter(q => q.type === 'practice');
+            if (currentQuizData.length === 0) {
+                currentQuizData = quizData.slice(10, 20).map((q, i) => ({...q, id: i+1}));
+            }
+            startSelectedQuiz();
+        }
+
+        function startFullQuiz() {
+            quizType = 'full';
+            currentQuizData = [...quizData];
+            startSelectedQuiz();
+        }
+
+        function startSelectedQuiz() {
+            document.getElementById('quizStart').classList.add('hidden');
+            document.getElementById('quizContainer').classList.remove('hidden');
+    
+            // Hide quiz type selection
+            document.querySelector('.grid-cols-2.gap-4').parentElement.classList.add('hidden');
+    
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const question = currentQuizData[currentQuestion];
+            const progress = ((currentQuestion + 1) / currentQuizData.length) * 100;
+    
+            // Update progress and score
+            document.getElementById('progressText').textContent = `Сұрақ ${currentQuestion + 1}/${currentQuizData.length}`;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            document.getElementById('scoreText').textContent = `Ұпай: ${score}`;
+    
+            // Update quiz type badge
+            const quizTypeBadge = document.getElementById('quizTypeBadge');
+            if (quizType === 'theory') {
+                quizTypeBadge.textContent = '📚 Теория';
+                quizTypeBadge.className = 'text-cyberblue font-bold';
+            } else if (quizType === 'practice') {
+                quizTypeBadge.textContent = '🔗 Практика';
+                quizTypeBadge.className = 'text-gold font-bold';
+            } else {
+                quizTypeBadge.textContent = '📊 Толық тест';
+                quizTypeBadge.className = 'text-alertred font-bold';
+            }
+
+            // Update question elements
+            document.getElementById('scenarioText').textContent = question.scenario;
+            document.getElementById('questionText').textContent = question.question;
+    
+            // Update question type badge
+            const questionTypeBadge = document.getElementById('questionTypeBadge');
+            if (question.type === 'theory') {
+                questionTypeBadge.textContent = '📚 Теория';
+                questionTypeBadge.className = 'ml-2 px-2 py-1 rounded text-xs font-bold bg-cyberblue bg-opacity-30 text-cyberblue';
+            } else {
+                questionTypeBadge.textContent = '🔗 Практика';
+                questionTypeBadge.className = 'ml-2 px-2 py-1 rounded text-xs font-bold bg-gold bg-opacity-30 text-gold';
+            }
+
+            // Show/hide URL box for practice questions
+            const urlBox = document.getElementById('urlBox');
+            const imageBox = document.getElementById('imageBox');
+    
+            if (question.type === 'practice' && question.url) {
+                urlBox.classList.remove('hidden');
+                document.getElementById('scenarioTitle').textContent = question.scenario;
+                document.getElementById('scenarioDescription').textContent = question.url;
+                imageBox.classList.add('hidden');
+            } else if (question.type === 'theory' && question.image) {
+                urlBox.classList.add('hidden');
+                imageBox.classList.remove('hidden');
+                document.getElementById('questionImage').src = question.image;
+                document.getElementById('questionImage').alt = question.scenario;
+            } else {
+                urlBox.classList.add('hidden');
+                imageBox.classList.add('hidden');
+            }
+
+            // Answers
+            const answersContainer = document.getElementById('answersContainer');
+            answersContainer.innerHTML = '';
+    
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'p-4 bg-darknavy rounded-xl cyber-border hover:bg-cyberblue hover:bg-opacity-20 transition text-left group';
+                button.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <div class="w-6 h-6 rounded-full border-2 border-cyberblue flex items-center justify-center">
+                            <div class="w-3 h-3 rounded-full bg-cyberblue hidden"></div>
+                        </div>
+                        <span class="text-left">${option.text}</span>
+                    </div>
+                `;
+                button.onclick = () => selectAnswer(index);
+                answersContainer.appendChild(button);
+            });
+
+            // Navigation buttons
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+    
+            prevBtn.classList.toggle('opacity-50', currentQuestion === 0);
+            prevBtn.classList.toggle('cursor-not-allowed', currentQuestion === 0);
+            prevBtn.classList.toggle('hover:bg-opacity-20', currentQuestion !== 0);
+    
+            nextBtn.classList.toggle('hidden', currentQuestion === currentQuizData.length - 1);
+            submitBtn.classList.toggle('hidden', currentQuestion !== currentQuizData.length - 1);
+
+            feather.replace();
+        }
+
+        function selectAnswer(selectedIndex) {
+            const buttons = document.querySelectorAll('#answersContainer button');
+            buttons.forEach((button, index) => {
+                const circle = button.querySelector('div > div > div');
+                if (index === selectedIndex) {
+                    button.classList.add('bg-cyberblue', 'bg-opacity-20');
+                    circle.classList.remove('hidden');
+                } else {
+                    button.classList.remove('bg-cyberblue', 'bg-opacity-20');
+                    circle.classList.add('hidden');
+                }
+            });
+
+            userAnswers[currentQuestion] = selectedIndex;
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestion] === undefined) {
+                alert('Жауапты таңдаңыз!');
+                return;
+            }
+
+            // Check answer
+            const correctAnswer = quizData[currentQuestion].options[userAnswers[currentQuestion]].correct;
+            if (correctAnswer) score++;
+
+            currentQuestion++;
+            loadQuestion();
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            
+                // Restore previous selection
+                if (userAnswers[currentQuestion] !== undefined) {
+                    setTimeout(() => selectAnswer(userAnswers[currentQuestion]), 100);
+                }
+            }
+        }
+
+        function submitQuiz() {
+            if (userAnswers[currentQuestion] === undefined) {
+                alert('Соңғы жауапты таңдаңыз!');
+                return;
+            }
+
+            // Check last answer
+            const correctAnswer = quizData[currentQuestion].options[userAnswers[currentQuestion]].correct;
+            if (correctAnswer) score++;
+
+            showResults();
+        }
+
+        function showResults() {
+            const percentage = (score / currentQuizData.length) * 100;
+            let title, message, color, icon;
+
+            if (percentage >= 80) {
+                title = "Керемет! 🎉";
+                message = "Сіз фишинг бойынша экспертсіз! Өте жақсы нәтиже!";
+                color = "text-green-400";
+                icon = "award";
+            } else if (percentage >= 60) {
+                title = "Жақсы! 👍";
+                message = "Сізде жақсы білім бар, бірақ әлі де сақ болу керек.";
+                color = "text-cyberblue";
+                icon = "thumbs-up";
+            } else {
+                title = "Жақсарту қажет ⚠️";
+                message = "Фишингті тану дағдыларыңызды дамыту үшін қосымша оқу қажет.";
+                color = "text-alertred";
+                icon = "alert-triangle";
+            }
+
+            document.getElementById('quizContainer').classList.add('hidden');
+            document.getElementById('quizResults').classList.remove('hidden');
+    
+            document.getElementById('quizResults').innerHTML = `
+                <div class="w-20 h-20 ${color} bg-opacity-20 rounded-full flex items-center justify-center cyber-border mx-auto mb-6">
+                    <i data-feather="${icon}" class="${color} w-10 h-10"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 ${color}">${title}</h3>
+                <div class="text-4xl font-bold mb-6 ${color}">${score}/${currentQuizData.length} (${Math.round(percentage)}%)</div>
+                <div class="inline-block px-4 py-2 ${quizType === 'theory' ? 'bg-cyberblue' : quizType === 'practice' ? 'bg-gold' : 'bg-alertred'} bg-opacity-20 rounded-lg cyber-border mb-4">
+                    <span class="${quizType === 'theory' ? 'text-cyberblue' : quizType === 'practice' ? 'text-gold' : 'text-alertred'} font-bold">
+                        ${quizType === 'theory' ? '📚 Теориялық тест' : quizType === 'practice' ? '🔗 Практикалық тест' : '📊 Толық тест'}
+                    </span>
+                </div>
+                <p class="text-gray-300 mb-8">${message}</p>
+    
+                <div class="bg-[#0a1525] p-6 rounded-lg cyber-border mb-6 text-left max-h-96 overflow-y-auto">
+                    <h4 class="font-bold text-cyberblue mb-4">📊 Тест нәтижелері:</h4>
+                    <div class="space-y-4">
+                        ${currentQuizData.map((q, index) => {
+                            const userAnswerIndex = userAnswers[index];
+                            const userAnswer = q.options[userAnswerIndex];
+                            const isCorrect = userAnswer ? userAnswer.correct : false;
+                    
+                            return `
+                                <div class="p-4 rounded-lg ${isCorrect ? 'bg-green-500 bg-opacity-20' : 'bg-red-500 bg-opacity-20'}">
+                                    <div class="font-bold mb-2">
+                                        Сұрақ ${index + 1}: ${q.scenario}
+                                        <span class="ml-2 text-xs px-2 py-1 rounded ${q.type === 'theory' ? 'bg-cyberblue bg-opacity-30 text-cyberblue' : 'bg-gold bg-opacity-30 text-gold'}">
+                                            ${q.type === 'theory' ? '📚' : '🔗'}
+                                        </span>
+                                    </div>
+                                    <div class="text-gray-300 mb-2">${q.question}</div>
+                                    ${q.url ? `<div class="text-sm font-mono bg-black p-2 rounded my-2 text-gray-400">${q.url}</div>` : ''}
+                                    <div class="text-sm ${isCorrect ? 'text-green-400' : 'text-red-400'} font-bold mb-2">
+                                        Сіздің жауабыңыз: ${userAnswer ? userAnswer.text : 'Жауап берілмеген'} 
+                                        ${isCorrect ? '✓' : '✗'}
+                                    </div>
+                                    <div class="text-sm text-gray-400">
+                                        <strong>Түсініктеме:</strong> ${userAnswer ? userAnswer.reason : 'Жауап берілмеген'}
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="restartQuiz()" class="px-6 py-3 bg-cyberblue text-darknavy font-bold rounded-lg hover:bg-opacity-90 transition flex items-center space-x-2">
+                        <i data-feather="refresh-cw" class="w-4 h-4"></i>
+                        <span>Қайта бастау</span>
+                    </button>
+                    <button onclick="chooseAnotherQuiz()" class="px-6 py-3 bg-transparent text-cyberblue font-bold rounded-lg cyber-border hover:bg-opacity-20 transition flex items-center space-x-2">
+                        <i data-feather="grid" class="w-4 h-4"></i>
+                        <span>Басқа тест</span>
+                    </button>
+                    <button onclick="showLinkInspector()" class="px-6 py-3 bg-gold text-darknavy font-bold rounded-lg hover:bg-opacity-90 transition flex items-center space-x-2">
+                        <i data-feather="link" class="w-4 h-4"></i>
+                        <span>Link Inspector</span>
+                    </button>
+                </div>
+            `;
+
+            feather.replace();
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = [];
+    
+            document.getElementById('quizResults').classList.add('hidden');
+            document.getElementById('quizContainer').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function chooseAnotherQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = [];
+            currentQuizData = [];
+            quizType = '';
+    
+            document.getElementById('quizResults').classList.add('hidden');
+            document.getElementById('quizContainer').classList.add('hidden');
+            document.querySelector('.grid-cols-2.gap-4').parentElement.classList.remove('hidden');
+        }
+
+        // Telegram ботқа бағыттайтын функция:
+        function openTelegramBot() {
+            window.open('https://t.me/phishcheckbot', '_blank');
+        }
+
+        // JavaScript функциялары
+        function openFullscreenImage() {
+            window.open('resources/images.png', '_blank', 'fullscreen=yes');
+        }
+
+        function shareImage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Киберқауіпсіздік инфографикасы',
+                    text: 'Киберқауіпсіздік туралы әдемі инфографика',
+                    url: window.location.href + 'images.png'
+                });
+            } else {
+                // Ескі браузерлер үшін
+                navigator.clipboard.writeText(window.location.href + 'images.png');
+                alert('Сілтеме алмасу буферіне көшірілді!');
+            }
+        }
+
+        // Видео функциялары
+        function openVideoFullscreen() {
+            // Егер жергілікті видео файлы болса
+            window.open('resources/videoplayback.mp4', '_blank');
+    
+            // Немесе YouTube видео
+            window.open('https://www.youtube.com/embed/bmaU8KA0Mrg?autoplay=1', '_blank', 'fullscreen=yes');
+        }
+    </script>
+</body>
+</html>
