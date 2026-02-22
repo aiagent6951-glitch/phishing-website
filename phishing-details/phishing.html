@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="kk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фишинг туралы толық ақпарат — AliGuard</title>
+    <meta name="description" content="Фишингтің барлық түрлері, егжей-тегжейлі сипаттамалары және мысалдары">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23071B35'/%3E%3Cpath d='M50 20L20 50V80H80V50L50 20Z' fill='none' stroke='%230BB0FF' stroke-width='8' stroke-linejoin='round'/%3E%3Ctext x='50' y='60' font-family='Arial' font-size='40' font-weight='bold' text-anchor='middle' fill='%230BB0FF'%3EA%3C/text%3E%3C/svg%3E">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyberblue: '#0BB0FF',
+                        darknavy: '#071122',
+                        alertred: '#FF4D4D',
+                        gold: '#FFD700',
+                        safegreen: '#00FF88'
+                    },
+                    fontFamily: {
+                        sans: ['"Exo 2"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background-color: #071122;
+            color: white;
+        }
+        .cyber-border {
+            border: 1px solid rgba(11, 176, 255, 0.3);
+            box-shadow: 0 0 15px rgba(11, 176, 255, 0.2);
+        }
+        .danger-border {
+            border: 1px solid rgba(255, 77, 77, 0.3);
+            box-shadow: 0 0 15px rgba(255, 77, 77, 0.2);
+        }
+        ::selection {
+            background: #0BB0FF;
+            color: #071122;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-darknavy to-black">
+    <div id="vanta-bg" class="fixed inset-0 -z-10"></div>
+    
+    <!-- Header -->
+    <header class="py-6 px-4 md:px-12 backdrop-blur-md bg-opacity-80 bg-darknavy border-b border-cyberblue border-opacity-30">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-12 h-12 bg-cyberblue bg-opacity-20 rounded-xl flex items-center justify-center cyber-border">
+                    <span class="text-2xl font-bold text-cyberblue">A</span>
+                </div>
+                <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyberblue to-white">
+                    Ali<span>Guard</span>
+                </h1>
+            </div>
+            <a href="../index.html" class="px-4 py-2 bg-cyberblue bg-opacity-20 rounded-lg cyber-border hover:bg-opacity-40 transition">
+                Негізгі бетке оралу
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-16 px-4 md:px-12 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyberblue to-white">Фишинг</span> 
+                <span class="text-alertred">туралы</span> толық ақпарат
+            </h1>
+            <p class="text-xl text-gray-300">
+                Фишингтің анықтамасы, түрлері, мысалдары және қорғану әдістері
+            </p>
+        </div>
+    </section>
+
+    <!-- Фишингтің жалпы сипаттамасы -->
+    <section class="py-12 px-4 md:px-12 max-w-6xl mx-auto">
+        <div class="bg-darknavy bg-opacity-60 p-8 rounded-xl cyber-border">
+            <h2 class="text-3xl font-bold mb-6 text-cyberblue">Фишинг деген не?</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <p class="text-gray-300 mb-4">
+                        <strong>Фишинг</strong> - бұл киберқауіпсіздікке арналған шабуыл түрі, онда шабуылшы құпия ақпаратты (парольдер, несие картасы мәліметтері, жеке сандық кодтар) алу үшін жалған сенімді тұлға ретінде әрекет етеді.
+                    </p>
+                    
+                    <p class="text-gray-300 mb-4">
+                        Фишинг термині "password fishing" (парольдерді балық аулау) сөз тіркесінен шыққан. Шабуылшылар "жәндіктерді" аулауға ұқсас әдісті қолданады - олар жалған өрнектерді лақтырып, құрбандардың жеке ақпаратын "ұстауға" тырысады.
+                    </p>
+
+                    <h3 class="text-xl font-bold mb-4 text-alertred">Фишингтің мақсаты</h3>
+                    <ul class="space-y-2 text-gray-300 mb-6">
+                        <li class="flex items-start">
+                            <i data-feather="target" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Парольдер мен логиндерді ұрлау</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="credit-card" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Несие карталарының мәліметтерін алу</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="user" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Жеке куәлік мәліметтерін жинау</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="database" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Корпоративтік деректерге қол жеткізу</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <img src="../images/phishing-attack.jpg" alt="Фишинг схемасы" class="rounded-lg w-full h-64 object-cover mb-4">
+                    
+                    <div class="bg-darknavy p-4 rounded-lg border border-alertred border-opacity-30">
+                        <h4 class="font-bold mb-2 text-alertred">Тарихи факт:</h4>
+                        <p class="text-gray-300 text-sm">
+                            Бірінші фишинг шабуылдары 1990-шы жылдардың ортасында пайда болды. Алғашқы шабуылшылар AOL пайдаланушыларының тіркеу мәліметтерін ұрлау үшін жалған "тіркелу" хабарламаларын жіберді.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-center p-6 bg-darknavy rounded-lg">
+                    <div class="text-3xl font-bold text-alertred mb-2">90%</div>
+                    <div class="text-gray-300">Кибершабуылдар фишингтен басталады</div>
+                </div>
+                <div class="text-center p-6 bg-darknavy rounded-lg">
+                    <div class="text-3xl font-bold text-alertred mb-2">$12M+</div>
+                    <div class="text-gray-300">Жылына фишингтен шығын</div>
+                </div>
+                <div class="text-center p-6 bg-darknavy rounded-lg">
+                    <div class="text-3xl font-bold text-alertred mb-2">5 мин</div>
+                    <div class="text-gray-300">Фишинг сайтының орташа "өмір сүру" уақыты</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="py-8 px-4 md:px-12 max-w-6xl mx-auto">
+        <div class="bg-darknavy bg-opacity-60 p-6 rounded-xl cyber-border">
+            <h2 class="text-2xl font-bold mb-6 text-cyberblue">Фишинг түрлері</h2>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <a href="#email-phishing" class="p-4 bg-darknavy rounded-lg hover:bg-cyberblue hover:bg-opacity-20 transition text-center">
+                    <i data-feather="mail" class="w-8 h-8 mx-auto mb-2 text-alertred"></i>
+                    <span class="text-sm">Email фишинг</span>
+                </a>
+                <a href="#smishing" class="p-4 bg-darknavy rounded-lg hover:bg-cyberblue hover:bg-opacity-20 transition text-center">
+                    <i data-feather="smartphone" class="w-8 h-8 mx-auto mb-2 text-alertred"></i>
+                    <span class="text-sm">Smishing</span>
+                </a>
+                <a href="#vishing" class="p-4 bg-darknavy rounded-lg hover:bg-cyberblue hover:bg-opacity-20 transition text-center">
+                    <i data-feather="phone" class="w-8 h-8 mx-auto mb-2 text-alertred"></i>
+                    <span class="text-sm">Vishing</span>
+                </a>
+                <a href="#spear-phishing" class="p-4 bg-darknavy rounded-lg hover:bg-cyberblue hover:bg-opacity-20 transition text-center">
+                    <i data-feather="target" class="w-8 h-8 mx-auto mb-2 text-alertred"></i>
+                    <span class="text-sm">Spear фишинг</span>
+                </a>
+                <a href="#website-phishing" class="p-4 bg-darknavy rounded-lg hover:bg-cyberblue hover:bg-opacity-20 transition text-center">
+                    <i data-feather="globe" class="w-8 h-8 mx-auto mb-2 text-alertred"></i>
+                    <span class="text-sm">Веб-сайт фишинг</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Phishing -->
+    <section id="email-phishing" class="py-12 px-4 md:px-12 max-w-6xl mx-auto">
+        <div class="bg-darknavy bg-opacity-60 p-8 rounded-xl danger-border">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-alertred bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+                    <i data-feather="mail" class="text-alertred"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-alertred">Электрондық пошта фишингі</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-cyberblue">Сипаттамасы</h3>
+                    <p class="text-gray-300 mb-4">
+                        Электрондық пошта фишингі - бұл фишингтің ең көп тараған түрі. Шабуылшы құрбанға жалған электрондық пошта жібереді, ол ресми ұйымнан (банк, әлеуметтік желі, интернет-дүкен) келгендей көрінеді.
+                    </p>
+                    <p class="text-gray-300 mb-4">
+                        Хабарламада құрбанды шұғыл әрекет етуге итермелейтін мәтін болады: "Есептік жазбаңыз бұғатталуға жақын", "Транзакцияны растау қажет" немесе "Сыйлық жеңіп алдыңыз".
+                    </p>
+                    
+                    <h3 class="text-xl font-bold mb-4 text-alertred">Негізгі белгілері</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Жіберушінің электрондық поштасы ресми доменге ұқсамайды</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Грамматикалық қателер мен бұзылған форматирование</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Шұғыл әрекет талабы</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Күдікті сілтемелер немесе тіркемелер</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <img src="../images/email-phishing.jpg" alt="Email фишинг мысалы" class="rounded-lg w-full h-64 object-cover mb-4">
+                    <div class="bg-darknavy p-4 rounded-lg">
+                        <h4 class="font-bold mb-2 text-alertred">Мысал:</h4>
+                        <p class="text-gray-300 text-sm">
+                            "Құрметті пайдаланушы, сіздің Amazon есептік жазбаңызда күдікті әрекет анықталды. Есептік жазбаңызды бұғаттаудан қорғау үшін 24 сағат ішінде келесі сілтеме арқылы растауыңызды сұраймыз: http://amaz0n-security-verify.com"
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 p-6 bg-darknavy rounded-lg border border-safegreen border-opacity-30">
+                <h3 class="text-xl font-bold mb-4 text-safegreen">Қорғану әдістері</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Электрондық пошта мекенжайын мұқият тексеру</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Сілтемелерді баспас бұрын курсорды үстіне апару</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Ешқашан күдікті тіркемелерді ашпау</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Екі факторлы аутентификацияны қолдану</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smishing -->
+    <section id="smishing" class="py-12 px-4 md:px-12 max-w-6xl mx-auto">
+        <div class="bg-darknavy bg-opacity-60 p-8 rounded-xl danger-border">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-alertred bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+                    <i data-feather="smartphone" class="text-alertred"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-alertred">Smishing (SMS фишингі)</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-cyberblue">Сипаттамасы</h3>
+                    <p class="text-gray-300 mb-4">
+                        Smishing - бұл SMS хабарламалары арқылы жүргізілетін фишинг түрі. Шабуылшы құрбанға жалған SMS жібереді, ол әдетте банк, жеткізу қызметі немесе мемлекеттік ұйымнан келгендей көрінеді.
+                    </p>
+                    <p class="text-gray-300 mb-4">
+                        Хабарламада сілтеме болуы мүмкін, оны басу арқылы құрбан зиянды веб-сайтқа өтеді немесе жүйеге зиянды бағдарлама орнатады.
+                    </p>
+                    
+                    <h3 class="text-xl font-bold mb-4 text-alertred">Тән белгілері</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Белгісіз нөмірден келген хабарлама</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Сыйлық жеңіп алдыңыз деген уәде</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Жеткізу туралы жалған хабарлама</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Жеке ақпаратты SMS арқылы сұрау</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <img src="../images/sms-phishing.jpg" alt="Smishing мысалы" class="rounded-lg w-full h-64 object-cover mb-4">
+                    <div class="bg-darknavy p-4 rounded-lg">
+                        <h4 class="font-bold mb-2 text-alertred">Мысал:</h4>
+                        <p class="text-gray-300 text-sm">
+                            "DHL: Сіздің пакетіңіз жеткізілмеді. Жеткізуді қайта жоспарлау үшін: http://dhl-package-reschedule.com Сәлемдеме нөмірі: #48329"
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 p-6 bg-darknavy rounded-lg border border-safegreen border-opacity-30">
+                <h3 class="text-xl font-bold mb-4 text-safegreen">Қорғану әдістері</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Белгісіз нөмірлерден келген SMS оқымау</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">SMS арқылы жіберілген сілтемелерге сенбеу</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Ресми қызметтерге тікелей хабарласу</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Спам-фильтрлерді қолдану</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vishing -->
+    <section id="vishing" class="py-12 px-4 md:px-12 max-w-6xl mx-auto">
+        <div class="bg-darknavy bg-opacity-60 p-8 rounded-xl danger-border">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-alertred bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+                    <i data-feather="phone" class="text-alertred"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-alertred">Vishing (Дауыстық фишинг)</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-cyberblue">Сипаттамасы</h3>
+                    <p class="text-gray-300 mb-4">
+                        Vishing - бұл телефон арқылы жүргізілетін фишинг түрі. Шабуылшы құрбанға телефон соғып, өзін банк қызметкері, техникалық қолдау немесе мемлекеттік ұйым өкілі ретінде таныстырады.
+                    </p>
+                    <p class="text-gray-300 mb-4">
+                        Олар құрбанды жеке ақпаратын (несие картасы нөмірі, парольдер, жеке сандық коды) беруге итермелейді немесе ақша аударуды сұрайды.
+                    </p>
+                    
+                    <h3 class="text-xl font-bold mb-4 text-alertred">Тәсілдері</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>"Банк қауіпсіздік қызметі" деп таныстыру</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Есептік жазбадағы "мәселелер" туралы хабарлау</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Сыйлық жеңіп алғаныңызды хабарлау</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Техникалық қолдау көрсетуге уәде беру</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <img src="../images/vishing.jpg" alt="Vishing мысалы" class="rounded-lg w-full h-64 object-cover mb-4">
+                    <div class="bg-darknavy p-4 rounded-lg">
+                        <h4 class="font-bold mb-2 text-alertred">Мысал:</h4>
+                        <p class="text-gray-300 text-sm">
+                            "Сәлеметсіз бе, мен Microsoft техникалық қолдау қызметінен сөйлеп тұрмын. Сіздің компьютеріңізде вирус анықталды. Оны жою үшін бізге қашықтықтан кіру рұқсатыңызды беруіңіз керек."
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 p-6 bg-darknavy rounded-lg border border-safegreen border-opacity-30">
+                <h3 class="text-xl font-bold mb-4 text-safegreen">Қорғану әдістері</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Белгісіз нөмірлерге жеке ақпарат бермеу</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Ұйымға ресми нөмірі арқылы қайта хабарласу</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Телефонда парольдер мен кодтарды айтпау</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Күдікті телефон қоңырауларын елемеу</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spear Phishing -->
+    <section id="spear-phishing" class="py-12 px-4 md:px-12 max-w-6xl mx-auto">
+        <div class="bg-darknavy bg-opacity-60 p-8 rounded-xl danger-border">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-alertred bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+                    <i data-feather="target" class="text-alertred"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-alertred">Spear фишинг (Нақты нысаналы фишинг)</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-cyberblue">Сипаттамасы</h3>
+                    <p class="text-gray-300 mb-4">
+                        Spear фишинг - бұл жалпы фишингтен айырмашылығы, нақты бір адамды немесе ұйымды нысана алған жоғары дәрежеде жекелендірілген шабуыл түрі. Шабуылшы құрбан туралы алдын-ала ақпарат жинап, хабарламаны оның жеке қызығушылықтарына, жұмыс орнына немесе жеке өміріне сәйкес жәнеді.
+                    </p>
+                    <p class="text-gray-300 mb-4">
+                        Бұл фишинг түрі әдетте ірі компаниялардың жоғары лауазымды қызметкерлеріне, мемлекеттік қызметшілерге немесе құпия ақпаратқа қол жеткізе алатын адамдарға қарсы қолданылады.
+                    </p>
+                    
+                    <h3 class="text-xl font-bold mb-4 text-alertred">Ерекшеліктері</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Құрбан туралы жеке ақпаратты пайдалану</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Жұмыс немесе жеке таныс атауларын қолдану</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Компанияның ішкі тілін және процедураларын білу</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Аса сенімді көрінетін жіберуші атаулары</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <img src="../images/spear-phishing.jpeg" alt="Spear фишинг мысалы" class="rounded-lg w-full h-64 object-cover mb-4">
+                    <div class="bg-darknavy p-4 rounded-lg">
+                        <h4 class="font-bold mb-2 text-alertred">Мысал:</h4>
+                        <p class="text-gray-300 text-sm">
+                            "Құрметті [Аты-жөні], мен сіздің бухгалтерлік бөліміңізбен жұмыс істейтін [коллега аты] болып табыламын. Бізге жедел төлем қажет, өйткені жеткізуші біздің төлемді күтіп тұр. Төлем құжаттарын мына сілтеме арқылы жіберіңіз: http://company-internal-payment.com"
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 p-6 bg-darknavy rounded-lg border border-safegreen border-opacity-30">
+                <h3 class="text-xl font-bold mb-4 text-safegreen">Қорғану әдістері</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Жеке ақпаратты әлеуметтік желілерде шектеу</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Күдікті хабарламаларды тікелей растау</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Компанияның қауіпсіздік процедураларын білу</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Мәліметтерді беру алдында қосымша растау сұрау</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Веб-сайт фишингі -->
+    <section id="website-phishing" class="py-12 px-4 md:px-12 max-w-6xl mx-auto">
+        <div class="bg-darknavy bg-opacity-60 p-8 rounded-xl danger-border">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-alertred bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+                    <i data-feather="globe" class="text-alertred"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-alertred">Веб-сайт фишингі</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-cyberblue">Сипаттамасы</h3>
+                    <p class="text-gray-300 mb-4">
+                        Веб-сайт фишингі - бұл шабуылшылардың ресми веб-сайттардың дәл көшірмелерін жасап, құрбандарды жалған сайттарға бағыттау арқылы жүргізілетін фишинг түрі.
+                    </p>
+                    <p class="text-gray-300 mb-4">
+                        Бұл сайттар банктердің, әлеуметтік желілердің, электрондық пошта провайдерлерінің немесе интернет-дүкендердің ресми сайттарына өте ұқсас болып келеді. Құрбандар өздерінің тіркеу мәліметтерін енгізген кезде, бұл ақпарат шабуылшыларға жіберіледі.
+                    </p>
+                    
+                    <h3 class="text-xl font-bold mb-4 text-alertred">Жиі кездесетін мысалдар</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Facebook, Google, Apple сияқты әлеуметтік желілердің жалған кіру беттері</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Банктердің жалған онлайн-банкинг сайттары</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Amazon, eBay сияқты интернет-дүкендердің көшірмелері</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="alert-circle" class="text-alertred mr-2 mt-1 flex-shrink-0"></i>
+                            <span>Электрондық пошта провайдерлерінің (Gmail, Outlook) жалған беттері</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <img src="../images/website-phishing.jpg" alt="Веб-сайт фишинг мысалы" class="rounded-lg w-full h-64 object-cover mb-4">
+                    <div class="bg-darknavy p-4 rounded-lg">
+                        <h4 class="font-bold mb-2 text-alertred">Мысал:</h4>
+                        <p class="text-gray-300 text-sm">
+                            "faceb00k-login.com" сайты Facebook-тың ресми сайтына өте ұқсас, бірақ пайдаланушы аты мен парольді енгізген кезде, бұл мәліметтер шабуылшыларға жіберіледі. Домен атындағы "oo" әріптерінің орнына "00" сандары қолданылған.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 p-6 bg-darknavy rounded-lg border border-safegreen border-opacity-30">
+                <h3 class="text-xl font-bold mb-4 text-safegreen">Қорғану әдістері</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">URL мекенжайын мұқият тексеру</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">HTTPS байрағы мен SSL сертификатын тексеру</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr-2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Сайттарға тікелей өзіңіз теріп кіру</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-feather="check" class="text-safegreen mr=2 mt-1 flex-shrink-0"></i>
+                        <span class="text-gray-300">Антифишингтік кеңейтімдерді қолдану</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 md:px-12 bg-darknavy border-t border-cyberblue border-opacity-30 mt-16">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-400">© 2025 AliGuard. Фишингке қарсы қорғаныс академиясы</p>
+            <a href="../index.html" class="inline-flex items-center text-cyberblue hover:text-white transition mt-4">
+                <i data-feather="home" class="mr-2"></i> Негізгі бетке оралу
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Vanta.js background
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x0bb0ff,
+            backgroundColor: 0x071122,
+            points: 10.00,
+            maxDistance: 22.00,
+            spacing: 17.00
+        });
+
+        // Feather icons
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+        });
+    </script>
+</body>
+</html>
